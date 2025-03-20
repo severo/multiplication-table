@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Table de multiplication</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color:aliceblue
+    }
+    .wrapper {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(8, 1fr);
+      gap: 1.5rem;
+    }
+    .cell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 5rem;
+      height: 5rem;
+      border-radius: 0.1rem 0.5rem 0.5rem 0.5rem;
+      box-shadow: 5px 4px 8px 2px rgba(0,0,0,0.2);
+    }
+    dt {
+      /* font-weight: bold; */
+      font-size: 0.8em
+    }
+    dd {
+      /* font-style: italic; */
+      font-size: 2em;
+    }
+  </style>
+  <body>
+    
+  </body>
+  <script>
+    const body = document.querySelector('body');
+    const wrapper = document.createElement('dl');
+    wrapper.classList.add('wrapper');
+    body.appendChild(wrapper);
+
+    for (let i = 2; i < 10; i++) {
+      for (let j = 2; j < 10; j++) {
+        const cell = document.createElement('div');
+        cell.classList.add('cell');
+        cell.style.backgroundColor = `hsl(${i * 255 /10}, 50%, calc(${(20-j) / 20} * 100%))`;
+        wrapper.appendChild(cell);        
+
+        const title = document.createElement('dt');
+        title.textContent = `${i}×${j}=`;
+        cell.appendChild(title);
+
+        const value = document.createElement('dd');
+        value.textContent = i * j;
+        cell.appendChild(value);
+      }
+    }
+  </script>
+</html>
